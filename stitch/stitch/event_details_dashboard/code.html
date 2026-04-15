@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1e40af",
+                    "on-tertiary-container": "#ffa583",
+                    "on-surface": "#191c1e",
+                    "secondary": "#505f76",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "on-primary-fixed": "#001453",
+                    "primary": "#00288e",
+                    "outline": "#757684",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "on-secondary-container": "#54647a",
+                    "tertiary-fixed": "#ffdbce",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-tint": "#3755c3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary": "#611e00",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#872d00",
+                    "outline-variant": "#c4c5d5",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-primary": "#b8c4ff",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "on-error-container": "#93000a",
+                    "surface": "#f7f9fb",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "surface-bright": "#f7f9fb",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed": "#380d00",
+                    "on-surface-variant": "#444653"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #00288e 0%, #1e40af 100%);
+        }
+        .shadow-ambient {
+            box-shadow: 0 12px 24px rgba(25, 28, 30, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col h-full py-8 px-4 h-screen w-64 bg-slate-100 sticky top-0 shrink-0">
+<div class="mb-10 px-4">
+<h1 class="text-2xl font-bold tracking-tight text-blue-900 font-headline">Concierge</h1>
+<p class="text-xs text-slate-500 font-manrope tracking-tight uppercase">The Orchestrated Flow</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-200 transition-colors font-manrope tracking-tight text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white text-blue-900 font-semibold shadow-sm transition-colors font-manrope tracking-tight text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                Events
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-200 transition-colors font-manrope tracking-tight text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+                Bookings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-200 transition-colors font-manrope tracking-tight text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+                Profile
+            </a>
+</nav>
+<div class="mt-auto px-2">
+<button class="w-full primary-gradient text-white font-semibold py-3 px-6 rounded-lg shadow-ambient flex items-center justify-center gap-2 hover:scale-[1.01] transition-transform duration-200 text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Create Event
+            </button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center h-16 px-8 w-full full-width top-0 sticky bg-white/80 backdrop-blur-xl z-30 shadow-sm shadow-slate-200/50">
+<div class="flex items-center gap-6">
+<div class="relative focus-within:ring-2 focus-within:ring-blue-100 rounded-lg transition-all">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="bg-surface-container-high border-none rounded-lg py-2 pl-10 pr-4 text-sm w-64 focus:ring-0 focus:bg-surface-container-lowest transition-colors" placeholder="Search events..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-blue-700 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-blue-700 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 border border-outline-variant/15">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man in a tailored suit with a confident and friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhGu6DOgtmGBx1F74CrAux0XWTDqUIzLJFYzz3NUho9o7pb74yirsHkxXselnoiMhQUorbhX1DZwYppR5W_zDMxB6FJviGPvBNC2FEZDC6XUHQ-av9BaXtetid4CXgcPMKk15w4pZmuRg8X_t7nvNKYzclvC6RR1vRaYbZMr3FSxrVjgxR3ofwSQ2Es4eqknJnjYQMYXx-GSsB6r_qlXUYbk7jtlIKpNSBkBgNNDFZQWwWhPx-L5TkjfAa3mPiZ14jEV8LeE2ZilY"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-10 flex gap-8">
+<!-- Main Details Column -->
+<div class="flex-1 space-y-10">
+<!-- Hero Banner Section -->
+<section class="relative h-[420px] rounded-xl overflow-hidden shadow-ambient group">
+<img alt="Event Banner" class="w-full h-full object-cover" data-alt="wide shot of a prestigious technology conference with a cinematic stage setup, dramatic blue lighting, and a focused professional audience" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRveXypyiMbHbaEnHAvtn41EcT6GJ68rsRClmQQkRIf8LzI7iHTzzXX67vwvnyWBviNfeY9i5TwEPp90IYmYW_Q2L5x-bGuA-6BomqjqLwul-rTXx-kSLa0rzhVElr0U-p3hZWc1N-ZZFagXsUTk_oVvSEf_aOXtzEELoKH84at80F4_ATvi923bS_E4CevM6DoicY_ZJx2tVYgi8HGGIzZ7fQ0MJ88okUivjrjJ1lSrqNQaHUIHuMb9dc79NtqFKcKegR4AyEfDQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10 text-white">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-primary text-xs font-semibold rounded-full tracking-wider uppercase">Technology</span>
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs font-semibold rounded-full tracking-wider uppercase">High Demand</span>
+</div>
+<h2 class="text-5xl font-extrabold font-headline leading-tight tracking-tight mb-2">Global Tech Summit 2024</h2>
+<div class="flex items-center gap-6 text-sm font-medium opacity-90">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Oct 24 - 26, 2024
+                            </span>
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Grand Marina Pavilion, SF
+                            </span>
+</div>
+</div>
+</section>
+<!-- Asymmetric Info Grid -->
+<div class="grid grid-cols-12 gap-8">
+<div class="col-span-8 space-y-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-ambient">
+<h3 class="text-xl font-headline font-bold text-blue-900 mb-6">About this event</h3>
+<div class="space-y-4 text-on-surface-variant leading-relaxed font-body">
+<p>Join the world's most innovative minds for three days of immersive exploration into the future of technology. From quantum computing breakthroughs to the ethics of generative AI, the Global Tech Summit provides an unparalleled platform for orchestration and collaboration.</p>
+<p>This year's theme, <span class="text-primary font-semibold italic">"The Orchestrated Flow,"</span> focuses on how integrated systems create seamless experiences for end-users across global infrastructures.</p>
+<ul class="space-y-3 pt-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">check_circle</span>
+<span>Exclusive keynote sessions with industry pioneers.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">check_circle</span>
+<span>Hands-on architectural workshops and live coding labs.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">check_circle</span>
+<span>Network with over 5,000 CTOs and lead architects.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Venue Map Section -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-ambient">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-headline font-bold text-blue-900">Venue &amp; Location</h3>
+<button class="text-primary font-semibold text-sm hover:underline">Get Directions</button>
+</div>
+<div class="h-64 rounded-lg overflow-hidden relative group">
+<img alt="Venue Map" class="w-full h-full object-cover" data-alt="minimalist stylized map of San Francisco showing major landmarks and event venue location with soft blue and gray tones" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIJ8iya-WnHLN1hb0RXLWpgMd6Y8ZrCUEwEfJYBCcAp1_miyC7a_ahpJIZuuKIekiGe8f4C4IB2xcZLPWrGVFkApBM_YDSO_w5mY6pXCkxwoLCXIiXRXDe105QZMwrGdcgSeKAqtb2M0LeeZmKRpT-xAqXxlAajq4YM_4cIbAmRVjNHTx7s02GOKue2-LYOu5eFmij3tAdpc2Dv2PITgENLtVhO0JUSl3EOpFGXJGZXp5rQ5ney80IDsYUR2asPOx8vCPL6_knUXo"/>
+<div class="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary text-5xl drop-shadow-lg" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="mt-6 flex gap-4 items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-900">business</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Grand Marina Pavilion</p>
+<p class="text-sm text-on-surface-variant">455 Pier Road, San Francisco, CA 94105</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Sticky Column -->
+<div class="col-span-4 space-y-6">
+<!-- Book Now Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-ambient border-t-4 border-primary sticky top-24">
+<div class="mb-6">
+<span class="text-sm font-label uppercase tracking-widest text-slate-500">Starting from</span>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-extrabold font-headline text-blue-900">$850</span>
+<span class="text-slate-400 font-medium">/ person</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="p-4 rounded-lg bg-surface-container-low flex items-center justify-between group hover:bg-white border border-transparent hover:border-primary-container transition-all">
+<div>
+<p class="font-bold text-sm">Full Pass</p>
+<p class="text-xs text-on-surface-variant">3-Day Access + Workshops</p>
+</div>
+<span class="text-primary font-bold">$1,200</span>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low flex items-center justify-between group hover:bg-white border border-transparent hover:border-primary-container transition-all">
+<div>
+<p class="font-bold text-sm">Day Pass</p>
+<p class="text-xs text-on-surface-variant">Single Day Access</p>
+</div>
+<span class="text-primary font-bold">$450</span>
+</div>
+</div>
+<button class="w-full primary-gradient text-white font-bold py-4 rounded-lg shadow-ambient hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 mb-4">
+                                Book Your Spot
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-on-surface-variant">15% discount for groups of 5 or more</p>
+<div class="mt-8 pt-8 border-t border-outline-variant/15 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-600 text-lg">verified</span>
+</div>
+<p class="text-xs font-medium text-on-surface-variant">Verified High-End Event</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-lg">event_seat</span>
+</div>
+<p class="text-xs font-medium text-on-surface-variant">Only 42 seats remaining</p>
+</div>
+</div>
+</div>
+<!-- Speakers/Participants -->
+<div class="bg-surface-container-low p-6 rounded-xl">
+<h4 class="text-sm font-label font-bold text-blue-900 uppercase tracking-widest mb-4">Featured Speakers</h4>
+<div class="flex -space-x-3 overflow-hidden mb-4">
+<img alt="Speaker 1" class="inline-block h-10 w-10 rounded-full ring-2 ring-white" data-alt="professional portrait of a high-tech female executive with a confident smile and modern glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW-BtueBR4OUGPYX8oue_6_1VKmXq5ygxWnS0L79e9grkYUz5p6kWQaXRNfWIcbdYryIDiEYL_BbsmQ1KCNcHaliONlXY5DW0RL01r9XL4buRYomfc28HOD7h2xEkARnGOJHZkNmXRIs4fzCWK8Xn8_o8RGcjxh9iLjiYcesZJQgXUHB0Qw_zOZXpqOj3inu9G4m2VY_NNN8NQlyy7XkbsRor5Txys9y4GMnR5_qt3s1iorfBwYVIpG9kpErCkuyMSHlBhSa0HI20"/>
+<img alt="Speaker 2" class="inline-block h-10 w-10 rounded-full ring-2 ring-white" data-alt="close-up portrait of a thoughtful male tech lead with a clean aesthetic and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlra8GkAyAfta0R5kcayiRbi-48RxyptRWB5c4hyWEnn1QhGKgI5uPTmrkKIkDZQce1djV-6yqeyU8GKC4lZvyrYDUKW2Q586qB_nhaDJPD6lai7WNW9zWi5RpaiRCLke4VMnNsREjUO7Ao2swPqk_BatpIBFseOn0fNswHuIheWeoKy_LG4CzvIuK3WaXztP69OdFS4MxX567N5HjvMwuOY-NrYzOc05aqcA7k_Tnnw1i0VxnNa0hkibgS93KS2-Yd2mfrvEEsec"/>
+<img alt="Speaker 3" class="inline-block h-10 w-10 rounded-full ring-2 ring-white" data-alt="vibrant professional headshot of a young innovative designer with warm lighting and a modern workspace background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwcMXPhEAMI-v0h70yJ2sAQRdR3GD3s1ztGgC7GkMC-duBa0YWj_o9zxUh0G7JPg1D42w_R9-X_U6vp3nzMPh8ss2YI0PXh8caX_fKPUVBCYJy40GoBCnwchsDYvmcktGqXDO-SadvgjRiYFAEueCX_G_JniLwHSjaaEAzJK1AgfhUnshhcH2FKJi3y55-XOnPTXjimHC4rrre8vo52Wm2lmOfHWfa0hGy-LzLOSXHWlX0pIA26suuKNKT1t7ntI-9MnlqhlPCkiU"/>
+<div class="inline-block h-10 w-10 rounded-full ring-2 ring-white bg-primary flex items-center justify-center text-xs text-white font-bold">+12</div>
+</div>
+<p class="text-xs text-on-surface-variant">Joined by top-tier executives from Google, SpaceX, and Adobe.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

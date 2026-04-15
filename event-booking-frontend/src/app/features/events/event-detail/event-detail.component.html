@@ -1,0 +1,135 @@
+<div class="p-10 flex gap-8 max-w-7xl mx-auto" *ngIf="event; else loading">
+    <!-- Main Details Column -->
+    <div class="flex-1 space-y-10">
+        <!-- Hero Banner Section -->
+        <section class="relative h-[420px] rounded-xl overflow-hidden shadow-ambient group">
+            <img [src]="event.imageUrl" [alt]="event.title" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+            
+            <div class="absolute bottom-0 left-0 p-10 text-white">
+                <div class="flex gap-2 mb-4">
+                    <span class="px-3 py-1 bg-blue-800 text-xs font-semibold rounded-full tracking-wider uppercase">{{ event.tag }}</span>
+                    <span *ngIf="event.availableSeats < 20 && event.availableSeats > 0" class="px-3 py-1 bg-orange-800 text-orange-100 text-xs font-semibold rounded-full tracking-wider uppercase">High Demand</span>
+                    <span *ngIf="event.availableSeats === 0" class="px-3 py-1 bg-red-800 text-red-100 text-xs font-semibold rounded-full tracking-wider uppercase">Sold Out</span>
+                </div>
+                <h2 class="text-5xl font-extrabold font-headline leading-tight tracking-tight mb-2">{{ event.title }}</h2>
+                <div class="flex items-center gap-6 text-sm font-medium opacity-90">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">calendar_month</span>
+                        {{ event.eventDate | date:'mediumDate' }}
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">location_on</span>
+                        {{ event.location }}
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asymmetric Info Grid -->
+        <div class="grid grid-cols-12 gap-8">
+            <div class="col-span-12 md:col-span-8 space-y-8">
+                <div class="bg-white p-8 rounded-xl shadow-ambient">
+                    <h3 class="text-xl font-headline font-bold text-blue-900 mb-6">About this event</h3>
+                    <div class="space-y-4 text-slate-600 leading-relaxed font-body">
+                        <p>{{ event.description }}</p>
+                        <ul class="space-y-3 pt-4">
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-blue-800 mt-0.5">check_circle</span>
+                                <span>Exclusive keynote sessions with industry pioneers.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-blue-800 mt-0.5">check_circle</span>
+                                <span>Hands-on architectural workshops and live coding labs.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-blue-800 mt-0.5">check_circle</span>
+                                <span>Network with top tier professionals.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Venue Map Section -->
+                <div class="bg-white p-8 rounded-xl shadow-ambient">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-headline font-bold text-blue-900">Venue & Location</h3>
+                        <button class="text-blue-800 font-semibold text-sm hover:underline">Get Directions</button>
+                    </div>
+                    <div class="h-64 rounded-lg overflow-hidden relative group bg-slate-200">
+                        <!-- Placeholder Map -->
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIJ8iya-WnHLN1hb0RXLWpgMd6Y8ZrCUEwEfJYBCcAp1_miyC7a_ahpJIZuuKIekiGe8f4C4IB2xcZLPWrGVFkApBM_YDSO_w5mY6pXCkxwoLCXIiXRXDe105QZMwrGdcgSeKAqtb2M0LeeZmKRpT-xAqXxlAajq4YM_4cIbAmRVjNHTx7s02GOKue2-LYOu5eFmij3tAdpc2Dv2PITgENLtVhO0JUSl3EOpFGXJGZXp5rQ5ney80IDsYUR2asPOx8vCPL6_knUXo" class="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-800 text-5xl drop-shadow-lg" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex gap-4 items-center">
+                        <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-900">business</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900">{{ event.location }}</p>
+                            <p class="text-sm text-slate-600">Premium location in the heart of the city.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Sticky Column -->
+            <div class="col-span-12 md:col-span-4 space-y-6">
+                <div class="bg-white p-8 rounded-xl shadow-ambient border-t-4 border-blue-800 sticky top-24">
+                    <div class="mb-6">
+                        <span class="text-sm font-label uppercase tracking-widest text-slate-500">Starting from</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-extrabold font-headline text-blue-900">{{ event.price | currency:'USD':'symbol':'1.0-0' }}</span>
+                            <span class="text-slate-400 font-medium">/ person</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="p-4 rounded-lg bg-slate-50 flex items-center justify-between group hover:bg-white border border-transparent hover:border-blue-200 transition-all cursor-pointer">
+                            <div>
+                                <p class="font-bold text-sm text-slate-900">Full Pass</p>
+                                <p class="text-xs text-slate-500">All Access</p>
+                            </div>
+                            <span class="text-blue-800 font-bold">{{ event.price | currency:'USD':'symbol':'1.0-0' }}</span>
+                        </div>
+                    </div>
+
+                    <button 
+                        (click)="onBookNow()"
+                        [disabled]="event.availableSeats === 0"
+                        [ngClass]="{'opacity-50 cursor-not-allowed': event.availableSeats === 0, 'hover:scale-[1.02]': event.availableSeats > 0}"
+                        class="w-full bg-primary-gradient text-white font-bold py-4 rounded-lg shadow-ambient transition-all flex items-center justify-center gap-3 mb-4">
+                        {{ event.availableSeats === 0 ? 'Sold Out' : 'Book Your Spot' }}
+                        <span class="material-symbols-outlined" *ngIf="event.availableSeats > 0">arrow_forward</span>
+                    </button>
+                    <p class="text-center text-xs text-slate-500">15% discount for groups of 5 or more</p>
+                    
+                    <div class="mt-8 pt-8 border-t border-slate-100 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-green-600 text-lg">verified</span>
+                            </div>
+                            <p class="text-xs font-medium text-slate-600">Verified High-End Event</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-blue-600 text-lg">event_seat</span>
+                            </div>
+                            <p class="text-xs font-medium" [ngClass]="event.availableSeats < 20 ? 'text-orange-600' : 'text-slate-600'">
+                                Only {{ event.availableSeats }} seats remaining
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="flex justify-center items-center py-20 min-h-screen">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+    </div>
+</ng-template>

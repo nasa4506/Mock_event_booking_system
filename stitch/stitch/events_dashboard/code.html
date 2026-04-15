@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Concierge - Events Listing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1e40af",
+                    "on-tertiary-container": "#ffa583",
+                    "on-surface": "#191c1e",
+                    "secondary": "#505f76",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "on-primary-fixed": "#001453",
+                    "primary": "#00288e",
+                    "outline": "#757684",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "on-secondary-container": "#54647a",
+                    "tertiary-fixed": "#ffdbce",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-tint": "#3755c3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary": "#611e00",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#872d00",
+                    "outline-variant": "#c4c5d5",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-primary": "#b8c4ff",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "on-error-container": "#93000a",
+                    "surface": "#f7f9fb",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "surface-bright": "#f7f9fb",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed": "#380d00",
+                    "on-surface-variant": "#444653"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #00288e 0%, #1e40af 100%);
+        }
+        .scale-101:hover {
+            transform: scale(1.01);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-fixed">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="bg-slate-100 dark:bg-slate-900 h-screen w-64 border-r-0 flex flex-col py-8 px-4 font-manrope tracking-tight text-sm fixed left-0 top-0 z-50">
+<div class="mb-10 px-2">
+<h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-400">Concierge</h1>
+<p class="text-slate-500 text-[10px] uppercase tracking-[0.2em] mt-1">The Orchestrated Flow</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-blue-900 dark:text-blue-400 font-semibold shadow-sm scale-101 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<div class="mt-auto px-2">
+<button class="w-full bg-primary-gradient text-on-primary py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 shadow-[0_12px_24px_rgba(25,28,30,0.06)] hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    Create Event
+                </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl full-width top-0 sticky z-40 shadow-sm shadow-slate-200/50 dark:shadow-none font-inter text-sm flex justify-between items-center h-16 px-8 w-full">
+<div class="flex items-center gap-8 flex-1">
+<h2 class="text-blue-900 dark:text-blue-400 font-bold text-xl tracking-tight">Events</h2>
+<div class="relative w-full max-w-md focus-within:ring-2 focus-within:ring-blue-100 rounded-lg transition-all">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-2 pl-10 pr-4 focus:bg-surface-container-lowest focus:ring-0 text-on-surface placeholder:text-slate-400" placeholder="Search curated experiences..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-slate-500">
+<button class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-[11px] font-bold text-on-surface uppercase tracking-wider">Alexander Vance</p>
+<p class="text-[10px] text-slate-500">Premium Member</p>
+</div>
+<img alt="User profile photo" class="w-10 h-10 rounded-full object-cover ring-2 ring-white shadow-sm" data-alt="professional headshot of a smiling man with clean-cut appearance in a minimalist studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSvW3V2wwB8k4WblEayHocNhxYzTXPx6oTmnt9nC9Aus2Gb7M093IT8RFGX9yl4fMK9DBxhFdqjfgCvnpojdemPMdhy_qOKlS6n0p292TDCgSnaYBmEhQUtBJaipKXF4Lpyaz-_65jCHM9SNvCVIE1AfxoSyoDgA75ZUcjs2lrg2LFV2N7DDQojR3BJjTX7Ct4vXx3qyWVUwOwJolFp0Uzbc1qRbK0ctzqUA1msiHPLhjyC8fEnGAoTEwmljdmdReTtP65q8jPFi4"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 lg:p-12">
+<!-- Hero Section / Editorial Intro -->
+<section class="mb-12">
+<h3 class="font-headline text-[3.5rem] leading-tight font-extrabold text-blue-900 tracking-tighter max-w-2xl mb-4">
+                        Curated Events <br/> <span class="text-slate-400 font-medium">For The Discriminating.</span>
+</h3>
+<div class="flex items-center justify-between">
+<p class="text-secondary max-w-lg leading-relaxed">
+                            Discover a bespoke selection of global gatherings, from private gala dinners to high-stakes networking summits.
+                        </p>
+<div class="flex gap-2">
+<button class="p-2 rounded-full border border-outline-variant/30 text-secondary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+<button class="p-2 rounded-full border border-outline-variant/30 text-secondary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="sort">sort</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Event Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Event Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-low scale-101 flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img alt="Gala" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="luxurious grand ballroom setting with crystal chandeliers, elegant table settings, and soft purple ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvGkENIWPDy4TRzlnkgM424Lvmip--1JIIakXEublw3QtgVZUO7-hliKlQ87ZIx_d54BUEua_2fMBOxgNgXaxse14e399RKb1Xc8WdTeqhThGrrBcKAOoJExFcv6Xdvaipp8AmK4U0eNV_oW1KdAZOgxykr7MykTRDeMnu7DxTFcwY56uGRMV3VAM4jMgPsMWYDizjakJYXmNMpLLrpVPwG_gDwePv5rC90ATocgvISE_RLSeaVoolVGSGCeb5z0J2n-i7PUjx7Kg"/>
+<div class="absolute top-4 left-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-lg backdrop-blur-md bg-opacity-90">Urgent</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Private Gala</p>
+<h4 class="font-headline text-xl font-bold text-on-surface">The Celestial Soirée</h4>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Oct 24</p>
+<p class="text-[10px] text-secondary">2024</p>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span>
+<span>Monaco Yacht Club</span>
+</div>
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="event_seat">event_seat</span>
+<span>12 Seats Remaining</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-lg font-bold text-blue-900">$2,400</span>
+<button class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 group/btn">
+                                    View Details
+                                    <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-low scale-101 flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img alt="Tech Summit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="high-tech modern conference stage with neon blue accents and professional lighting in a futuristic city venue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmbRv6GuTGGjKh3p0AhtTfYWSftNgc-Gc-Tu_RhFdpSsacx-SiFWpacdeU_XNkItBROVt-maUEbGwxJpe4-nDMFD_gs8zY6_ycn81qV6oNELMaTxnfSLt7xQ2tbcbLD2WvFdKDu5Ryn1hV-cmWwyl_doWoH_-9QBnybx8B1BXuL20WAzFmevr4zfZLktOjW6xylKHpdeyJeYr6YPzlSlvB5tUXZuO0povkrONtGtmhlwfRWtl8lhf2DqnT2avC4NUBvL4VzzdAhUI"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Summit</p>
+<h4 class="font-headline text-xl font-bold text-on-surface">Quantum Nexus 2024</h4>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Nov 12</p>
+<p class="text-[10px] text-secondary">2024</p>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span>
+<span>The Ritz-Carlton, Tokyo</span>
+</div>
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="event_seat">event_seat</span>
+<span>Limited: 45 Available</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-lg font-bold text-blue-900">$850</span>
+<button class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 group/btn">
+                                    View Details
+                                    <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-low scale-101 flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img alt="Art Exhibition" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="minimalist art gallery with white walls, soft shadows, and contemporary sculptures on pedestals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSEcqyhxN2gOg-s3dPxgVYxSAJEGGvKoES2x_SBdH0cltn8Si5oRN9Y3x3lmhR7qMoVKdHYdnIKsvRLxnZz3mQyuWQHUQp3Yi9zst6J09mMAzuuMyQ6UIULg3tSUo9ntOpmuONYzs2XYrrMO-v0e6hjZHLjtVzrGkY_crfYof1Eke6wn2DYGa5uKnW91Hiq0VZDDvXXNTMgnr978T4Vc8rD4FfYi_186ae-00gvAYVSfusySKDKxtlzBY5o4j2gtFzHd2OHnb4AsA"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Exhibition</p>
+<h4 class="font-headline text-xl font-bold text-on-surface">Visions of the Void</h4>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Dec 05</p>
+<p class="text-[10px] text-secondary">2024</p>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span>
+<span>Gagosian Gallery, NYC</span>
+</div>
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="event_seat">event_seat</span>
+<span>82 Seats Remaining</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-lg font-bold text-blue-900">$120</span>
+<button class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 group/btn">
+                                    View Details
+                                    <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event Card 4 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-low scale-101 flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img alt="Vineyard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="sunset over rolling vineyard hills with rows of grapevines and a rustic stone villa in the distance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNdZY1P57wf2iuWDV9TGD9Kkat74q3_IEvyN8mTi4CoGj7jZkPsADtB7I_NiTW3EQBcqBnh49M0ZVR_qs0f3qu8KgbjKmfIS97l6iXZBBqNXGjJfejQU5UQ0x4CxXf7GQtkytQoVIqRpHuc_HHxG5uPaBtEXsC85TAxHn_BPMghMFjOWlDy2ToAelyy7oI3MbKM7XYbBgGJ2rKbLUSkbWiOi1KD74xaSkDy_BUT8mq2IhcoBvB-0CYhU3sp8-9w7KQmv6JGG9qlUw"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Exclusive Retreat</p>
+<h4 class="font-headline text-xl font-bold text-on-surface">Tuscan Harvest Weekend</h4>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Oct 18</p>
+<p class="text-[10px] text-secondary">2024</p>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span>
+<span>Castello di Ama, Tuscany</span>
+</div>
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="event_seat">event_seat</span>
+<span>Full: Waitlist Only</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-lg font-bold text-blue-900">$3,750</span>
+<button class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 group/btn">
+                                    View Details
+                                    <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event Card 5 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-low scale-101 flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img alt="Concert" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="intimate jazz club setting with warm lighting, a grand piano, and soft silhouettes of performers on stage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnrtxndFw8m4ZqjOg1oEYrh1mYCDguAqGXm-e-_obeTiZFMFvknBNDIhNei5HahyGchwH-H9nznKslm_ibWChi0we8ZnffbW3yw1II5MzcTpSaR1BcDauD0N9TciipyoTz_ljeMeRLG8pCEh1BcGZ271BvnYPhkd6UdCfU4VPOOu0Ptvf3Aw5PQ9NdA6eR0d1LQtuaHRPzAgP2f1CahHeGwDXb9qC7RQ9isitKnRn80FB7WQYKq4od5jLnWTh86qLDW-Rrw1mhrqc"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Live Performance</p>
+<h4 class="font-headline text-xl font-bold text-on-surface">Blue Note Sessions</h4>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Nov 02</p>
+<p class="text-[10px] text-secondary">2024</p>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span>
+<span>Saint-Germain-des-Prés, Paris</span>
+</div>
+<div class="flex items-center gap-3 text-secondary text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="event_seat">event_seat</span>
+<span>24 Seats Remaining</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-lg font-bold text-blue-900">$185</span>
+<button class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 group/btn">
+                                    View Details
+                                    <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Asymmetric Bento-style Card -->
+<div class="group bg-primary-gradient rounded-xl p-8 flex flex-col justify-between text-on-primary">
+<div>
+<span class="material-symbols-outlined text-4xl mb-6 opacity-60" data-icon="star">star</span>
+<h4 class="font-headline text-2xl font-extrabold tracking-tight mb-4 leading-tight">Need a bespoke experience?</h4>
+<p class="text-on-primary-container text-sm leading-relaxed mb-8">
+                                Our dedicated concierge team can tailor any event to your specific requirements, from private jet charters to exclusive backstage access.
+                            </p>
+</div>
+<button class="bg-white text-blue-900 font-bold py-3 px-6 rounded-lg text-sm w-fit transition-transform active:scale-95 shadow-lg">
+                            Request Private Concierge
+                        </button>
+</div>
+</div>
+<!-- Footer Pagination-like state (Subtle) -->
+<div class="mt-16 flex items-center justify-between py-8 border-t border-outline-variant/10">
+<p class="text-sm text-secondary">Showing <span class="font-bold text-on-surface">5</span> of <span class="font-bold text-on-surface">142</span> extraordinary events</p>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 text-sm font-semibold text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined text-lg" data-icon="chevron_left">chevron_left</span>
+                            Previous
+                        </button>
+<div class="h-6 w-[1px] bg-outline-variant/20"></div>
+<button class="flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
+                            Discover More
+                            <span class="material-symbols-outlined text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

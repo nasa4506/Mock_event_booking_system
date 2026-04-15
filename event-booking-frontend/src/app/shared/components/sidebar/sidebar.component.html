@@ -1,0 +1,31 @@
+<aside class="hidden md:flex flex-col h-screen w-64 border-r-0 bg-slate-100 dark:bg-slate-900 py-8 px-4 font-manrope tracking-tight text-sm sticky top-0 shrink-0 z-50">
+    <div class="mb-10 px-2">
+        <h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-400">Concierge</h1>
+        <p class="text-slate-500 text-[10px] uppercase tracking-[0.2em] mt-1">The Orchestrated Flow</p>
+    </div>
+    <nav class="flex-1 space-y-1">
+        <a routerLink="/" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors group">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Overview</span>
+        </a>
+        <a routerLink="/events" routerLinkActive="bg-white dark:bg-slate-800 text-blue-900 dark:text-blue-400 font-semibold shadow-sm scale-101" 
+            class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200 group">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span>Events</span>
+        </a>
+        <a routerLink="/bookings" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors group">
+            <span class="material-symbols-outlined">confirmation_number</span>
+            <span>Bookings</span>
+        </a>
+        <a routerLink="/profile" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors group">
+            <span class="material-symbols-outlined">person</span>
+            <span>Profile</span>
+        </a>
+    </nav>
+    <div class="mt-auto px-2">
+        <button class="w-full bg-primary-gradient text-on-primary py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 shadow-[0_12px_24px_rgba(25,28,30,0.06)] hover:opacity-90 transition-all">
+            <span class="material-symbols-outlined text-sm">add</span>
+            Create Event
+        </button>
+    </div>
+</aside>

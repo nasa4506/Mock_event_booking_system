@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Form - Concierge</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1e40af",
+                    "on-tertiary-container": "#ffa583",
+                    "on-surface": "#191c1e",
+                    "secondary": "#505f76",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "on-primary-fixed": "#001453",
+                    "primary": "#00288e",
+                    "outline": "#757684",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "on-secondary-container": "#54647a",
+                    "tertiary-fixed": "#ffdbce",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-tint": "#3755c3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary": "#611e00",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#872d00",
+                    "outline-variant": "#c4c5d5",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-primary": "#b8c4ff",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "on-error-container": "#93000a",
+                    "surface": "#f7f9fb",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "surface-bright": "#f7f9fb",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed": "#380d00",
+                    "on-surface-variant": "#444653"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": [ "Manrope" ],
+                    "body": [ "Inter" ],
+                    "label": [ "Inter" ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .scale-101:hover { transform: scale(1.01); }
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #00288e 0%, #1e40af 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface flex min-h-screen">
+<!-- SideNavBar (from JSON) -->
+<aside class="hidden md:flex flex-col h-screen w-64 border-r-0 bg-slate-100 dark:bg-slate-900 py-8 px-4 font-manrope tracking-tight text-sm sticky top-0">
+<div class="mb-10 px-2">
+<h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-400">Concierge</h1>
+<p class="text-xs text-secondary mt-1">The Orchestrated Flow</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active Navigation Logic: Bookings active -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-blue-900 dark:text-blue-400 font-semibold shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<button class="mt-auto bg-primary-gradient text-white py-3 px-4 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            Create Event
+        </button>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopAppBar (from JSON) -->
+<header class="flex justify-between items-center h-16 px-8 w-full full-width top-0 sticky z-30 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm shadow-slate-200/50 dark:shadow-none font-inter text-sm">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-surface-tint focus:bg-surface-container-lowest transition-all" placeholder="Search events..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-secondary hover:text-blue-700 dark:hover:text-blue-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-secondary hover:text-blue-700 dark:hover:text-blue-300">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 ring-2 ring-surface-variant">
+<img alt="User profile photo" data-alt="professional portrait of a creative executive with a soft neutral background and clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJc2LD9aC-YH11-UjCFLBlXyx-zj4gk9LBmcVQKq4ttjEnRD7dA3nBZAgLzRfs9pPVvD_Oj2JrF9wNzMEuWYpq4RArihWd2NCrHpk7WYPaZcXEf3bzZfMKH8B-0r8_IBZJ9kRWIexAM9YOuX20eIQUopz04OCwdoR3w5oVmR4BnSkb04TWUxKjtWBFB0wlouORuaaf7ZUmEscadg6zFSnjm05R2-rNBiP8oNM7hXTkY15vKAk9750SA1PDjh7I1ZxdfMT8qCo8n24"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 p-8 md:p-12 max-w-7xl mx-auto w-full">
+<!-- Breadcrumbs / Back navigation -->
+<div class="mb-10 flex items-center gap-2 text-secondary group cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+<span class="font-label text-sm uppercase tracking-widest font-medium">Return to Events</span>
+</div>
+<!-- Main Booking Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Column: The Form -->
+<div class="lg:col-span-7 space-y-12">
+<section>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-on-surface mb-2">Reserve Your Space</h2>
+<p class="text-secondary body-md">Complete the orchestration of your experience at the <span class="font-semibold text-primary">Annual Symphony Gala</span>.</p>
+</section>
+<div class="space-y-8">
+<!-- Prefilled Info Section -->
+<div class="p-6 bg-surface-container-low rounded-xl flex items-center gap-6">
+<div class="w-16 h-16 rounded-lg bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined !text-3xl" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg">Identity Confirmed</h4>
+<p class="text-sm text-secondary">Booking as <span class="font-medium text-on-surface">Eleanor Vance</span> (e.vance@studio.design)</p>
+</div>
+<button class="ml-auto text-primary text-sm font-semibold hover:underline">Change</button>
+</div>
+<!-- Seat Selection Form -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[12px_24px_24px_rgba(25,28,30,0.04)] space-y-8">
+<div>
+<label class="block font-label text-xs font-bold uppercase tracking-[0.1em] text-secondary mb-4">Attendee Capacity</label>
+<div class="flex items-center gap-4">
+<button class="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<input class="w-20 text-center text-xl font-headline font-bold border-none bg-surface-container-high rounded-lg h-12 focus:ring-2 focus:ring-surface-tint" type="number" value="2"/>
+<button class="w-12 h-12 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<span class="ml-4 text-secondary text-sm italic">Maximum of 8 seats per request</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label text-xs font-bold uppercase tracking-[0.1em] text-secondary mb-2">Preferred Section</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg h-12 focus:ring-2 focus:ring-surface-tint">
+<option>Premium Mezzanine</option>
+<option>Front Row Gallery</option>
+<option>Private Box</option>
+</select>
+</div>
+<div>
+<label class="block font-label text-xs font-bold uppercase tracking-[0.1em] text-secondary mb-2">Dietary Protocol</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg h-12 focus:ring-2 focus:ring-surface-tint">
+<option>No specific requirements</option>
+<option>Plant-based / Vegan</option>
+<option>Gluten-free</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label text-xs font-bold uppercase tracking-[0.1em] text-secondary mb-2">Special Orchestration Notes</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-surface-tint p-4" placeholder="Any specific requirements for your arrival or seating..." rows="3"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:col-span-5 sticky top-24">
+<div class="bg-surface-container-lowest rounded-xl shadow-[12px_24px_24px_rgba(25,28,30,0.06)] overflow-hidden border border-outline-variant/10">
+<div class="h-48 relative">
+<img alt="Symphony Hall" class="w-full h-full object-cover" data-alt="grand architectural view of a modern symphony hall with warm wooden panels and dramatic ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuq4takxdmRKsf5Jqu87OMUCSeb4zHMBgS5WReSut7Fqbt3jZmpZPtUl9TTIXEeLXpbT-Xfmt9Lc57trLeOcGyR-Zx2LCeXjB8HOImcWz61njFh1_8wlvx_eZDyrX9mRRDub8URlyXnyTN4ARsn7INFmfmfKvNpewN1QQqkL6KEbMnibkfF-QbfAEOQpFhVw8Q-9dWclb6WKvnr1Rlfn_LbH_8PcjSjL8xRThNknrpJZvjwOMuSTss79qqG95Ir4CdqIabsR5SWPo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+<div>
+<span class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">Limited Availability</span>
+<h3 class="text-white font-headline text-xl font-bold">Annual Symphony Gala</h3>
+</div>
+</div>
+</div>
+<div class="p-8 space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-secondary mb-1">Date &amp; Time</p>
+<p class="font-medium">Friday, October 24, 2024</p>
+<p class="text-sm text-secondary">19:30 - 22:00 BST</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold uppercase tracking-widest text-secondary mb-1">Location</p>
+<p class="font-medium">The Glass Pavilion</p>
+<p class="text-sm text-secondary">London, UK</p>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/10 space-y-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-secondary">Premium Mezzanine (x2)</span>
+<span class="font-medium">£240.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-secondary">Concierge Service Fee</span>
+<span class="font-medium">£12.50</span>
+</div>
+<div class="flex justify-between items-center pt-4 text-lg">
+<span class="font-headline font-bold">Total Investment</span>
+<span class="font-headline font-extrabold text-primary">£252.50</span>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full bg-primary-gradient text-white py-4 rounded-lg font-bold text-lg shadow-lg shadow-primary/20 scale-101 transition-transform">
+                                    Confirm Reservation
+                                </button>
+<p class="text-center text-[11px] text-secondary mt-4 px-4">
+                                    By confirming, you agree to our Orchestration Terms and Cancellation Policy. Final details will be sent to your primary email.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Trust Badge Asymmetry -->
+<div class="mt-8 flex items-center justify-center gap-8 opacity-40 grayscale">
+<span class="material-symbols-outlined !text-4xl" data-icon="shield">shield</span>
+<span class="material-symbols-outlined !text-4xl" data-icon="payments">payments</span>
+<span class="material-symbols-outlined !text-4xl" data-icon="verified">verified</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

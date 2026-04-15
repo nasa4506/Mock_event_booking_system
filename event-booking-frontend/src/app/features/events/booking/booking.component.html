@@ -1,0 +1,145 @@
+<div class="flex-1 p-8 md:p-12 max-w-7xl mx-auto w-full" *ngIf="event; else loading">
+    
+    <a [routerLink]="['/events', event.id]" class="mb-10 flex items-center gap-2 text-slate-500 group cursor-pointer w-max hover:text-blue-800 transition-colors">
+        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        <span class="font-label text-sm uppercase tracking-widest font-medium">Return to Details</span>
+    </a>
+
+    <!-- Main Booking Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start" *ngIf="!successMessage">
+        <!-- Left Column: The Form -->
+        <div class="lg:col-span-7 space-y-12">
+            <section>
+                <h2 class="font-headline text-4xl font-extrabold tracking-tight text-slate-900 mb-2">Reserve Your Space</h2>
+                <p class="text-slate-600">Complete the orchestration of your experience at the <span class="font-semibold text-blue-800">{{ event.title }}</span>.</p>
+            </section>
+            
+            <div class="space-y-8">
+                <!-- Prefilled Info Section -->
+                <div class="p-6 bg-slate-100 rounded-xl flex items-center gap-6">
+                    <div class="w-16 h-16 rounded-lg bg-white flex items-center justify-center text-blue-800 shadow-sm">
+                        <span class="material-symbols-outlined !text-3xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    </div>
+                    <div>
+                        <h4 class="font-headline font-bold text-lg text-slate-900">Identity Confirmed</h4>
+                        <p class="text-sm text-slate-600">Booking as <span class="font-medium text-slate-900">Alexander Vance</span> (MVP User)</p>
+                    </div>
+                </div>
+
+                <!-- Placeholder Seat Selection Form -->
+                <div class="bg-white p-8 rounded-xl shadow-[12px_24px_24px_rgba(25,28,30,0.04)] space-y-8 border border-slate-100 border-t-2 border-t-slate-200">
+                    <div>
+                        <p class="text-sm text-yellow-700 bg-yellow-50 p-3 rounded-lg mb-4 border border-yellow-200 flex items-start gap-2">
+                            <span class="material-symbols-outlined text-sm mt-0.5">info</span>
+                            Visual Layout Only: Selection here does not modify the backend API payload, following DTO requirements.
+                        </p>
+                        
+                        <label class="block font-label text-xs font-bold uppercase tracking-[0.1em] text-slate-500 mb-4">Attendee Capacity</label>
+                        <div class="flex items-center gap-4 text-slate-900">
+                            <button class="w-12 h-12 rounded-lg border border-slate-300 flex items-center justify-center hover:bg-slate-100 transition-colors">
+                                <span class="material-symbols-outlined">remove</span>
+                            </button>
+                            <input class="w-20 text-center text-xl font-headline font-bold border-slate-300 bg-slate-50 rounded-lg h-12" type="number" value="1" readonly/>
+                            <button class="w-12 h-12 rounded-lg border border-slate-300 flex items-center justify-center hover:bg-slate-100 transition-colors">
+                                <span class="material-symbols-outlined">add</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-label text-xs font-bold uppercase tracking-[0.1em] text-slate-500 mb-2">Preferred Section</label>
+                            <select class="w-full bg-slate-50 border-slate-300 rounded-lg h-12 focus:ring-2 focus:ring-blue-800">
+                                <option>Premium Mezzanine</option>
+                                <option>Front Row Gallery</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-label text-xs font-bold uppercase tracking-[0.1em] text-slate-500 mb-2">Dietary Protocol</label>
+                            <select class="w-full bg-slate-50 border-slate-300 rounded-lg h-12 focus:ring-2 focus:ring-blue-800">
+                                <option>No specific requirements</option>
+                                <option>Plant-based / Vegan</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Summary Column -->
+        <div class="lg:col-span-5 sticky top-24">
+            <div class="bg-white rounded-xl shadow-[12px_24px_24px_rgba(25,28,30,0.06)] overflow-hidden border border-slate-100">
+                <div class="h-48 relative">
+                    <img [src]="event.imageUrl" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-6">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-orange-800 text-orange-100 text-[10px] font-bold uppercase tracking-widest rounded-full mb-2" *ngIf="event.availableSeats < 20">Limited Availability</span>
+                            <h3 class="text-white font-headline text-xl font-bold">{{ event.title }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8 space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">Date</p>
+                            <p class="font-medium text-slate-900">{{ event.eventDate | date:'fullDate' }}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">Location</p>
+                            <p class="font-medium text-slate-900">{{ event.location }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6 border-t border-slate-100 space-y-4">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-600">Base Pass (x1)</span>
+                            <span class="font-medium text-slate-900">{{ event.price | currency:'USD':'symbol':'1.0-0' }}</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-600">Concierge Service Fee</span>
+                            <span class="font-medium text-slate-900">{{ 12.50 | currency:'USD':'symbol':'1.2-2' }}</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 text-lg">
+                            <span class="font-headline font-bold text-slate-900">Total</span>
+                            <span class="font-headline font-extrabold text-blue-800">{{ (event.price! + 12.5) | currency:'USD':'symbol':'1.2-2' }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button 
+                            (click)="submitBooking()"
+                            [disabled]="isSubmitting"
+                            [ngClass]="{'opacity-75 cursor-wait': isSubmitting, 'hover:scale-[1.01]': !isSubmitting}"
+                            class="w-full bg-primary-gradient text-white py-4 rounded-lg font-bold text-lg shadow-lg shadow-blue-900/20 transition-transform flex justify-center items-center gap-2">
+                            <span *ngIf="isSubmitting" class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span>
+                            {{ isSubmitting ? 'Processing...' : 'Confirm Reservation' }}
+                        </button>
+                        <p class="text-center text-[11px] text-slate-500 mt-4 px-4">
+                            By confirming, you agree to our Orchestration Terms and Cancellation Policy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message UI -->
+    <div *ngIf="successMessage" class="flex flex-col items-center justify-center py-20 text-center animate-fade-in">
+        <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 shadow-ambient">
+            <span class="material-symbols-outlined text-green-600 !text-5xl">check_circle</span>
+        </div>
+        <h2 class="text-4xl font-headline font-bold text-slate-900 mb-4">Reservation Confirmed!</h2>
+        <p class="text-slate-600 max-w-md mx-auto mb-8">
+            Your place at <span class="font-semibold">{{ event.title }}</span> has been secured. Your digital pass will be sent to your inbox.
+        </p>
+        <a routerLink="/events" class="px-8 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-lg transition-colors">
+            Return to Events
+        </a>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="flex justify-center items-center py-20 min-h-screen">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+    </div>
+</ng-template>

@@ -1,0 +1,152 @@
+<main class="min-h-screen flex flex-col md:flex-row bg-surface">
+  <!-- Left Side: Hero Section -->
+  <section class="hidden md:flex relative w-1/2 lg:w-3/5 bg-primary-container overflow-hidden p-16 flex-col justify-between">
+    <div class="absolute inset-0 z-0">
+      <img alt="Luxury hotel lobby" class="w-full h-full object-cover opacity-60 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV1k94HK2NJQXxkywPNQkBCfFCWaAqt98UCxnA6hPqB-ccQ6N6eO2iEZbt1KOQsNTqDWuOnW9sed6x3k29lzc1GWPdGgO5YdPSljPT7PyYGUBFTXVPkHM26k4I9mfFTRb14IfjuywbEoqRRAHk_EwNgm1fcdewC17q7afT1oaM5kXLAdE_Pm1l988jxd1nmhiVkgtldyQYAeqmwVWLxsI98OsD0aPKAu5BqAVsHJMMx1YcddCKo6AiBYy4a-MAZZIF21mlEDoyPt4"/>
+      <div class="absolute inset-0 bg-gradient-to-tr from-primary via-primary/40 to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/10 backdrop-blur-xl flex items-center justify-center rounded-lg border border-white/20">
+          <span class="material-symbols-outlined text-white">dashboard</span>
+        </div>
+        <span class="font-headline font-extrabold text-2xl tracking-tight text-white uppercase italic">Concierge</span>
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-xl">
+      <h1 class="font-headline font-extrabold text-white text-5xl lg:text-7xl leading-[1.1] mb-8 tracking-tighter">
+        The Orchestrated <br/> Flow.
+      </h1>
+      <p class="text-on-primary-container text-xl leading-relaxed font-body max-w-lg opacity-90">
+        Experience the precision of high-end event logistics. Manage grand visions with editorial clarity and bespoke efficiency.
+      </p>
+      <div class="mt-12 flex gap-12">
+        <div>
+          <div class="text-white font-headline font-bold text-3xl">2.4k</div>
+          <div class="text-on-primary-container text-[10px] font-label tracking-widest uppercase font-bold">Events Curated</div>
+        </div>
+        <div>
+          <div class="text-white font-headline font-bold text-3xl">99.9%</div>
+          <div class="text-on-primary-container text-[10px] font-label tracking-widest uppercase font-bold">Reliability</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative z-10">
+      <div class="flex items-center gap-4 bg-white/5 backdrop-blur-md p-4 rounded-xl max-w-xs border border-white/10 shadow-ambient">
+        <img alt="Curation Lead Profile" class="w-12 h-12 rounded-lg object-cover ring-1 ring-white/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhFEeuwRJeOc8hN47qL5g6Cw3Wfyj5wC6mAk2qxUS7OVIc4m8NrfLDTyGLpsIJc-r9YNU04lX_R-k5Jg3DvFyMOVF1mFO-a7z1K6ZZZhkHF4X8JQ7TsE5s5u-96bJ-CQd1hEgrulmjSAO07iyfD6OMZyBzs8y_I849pEAYgqqwoQameNUX0MzGAZAQOdarTo-cbWOGIzUi52LCT8Dyuo6d9UzRrQzCm3TzSlIpfK1VkVV_G684t4CQzRkXXUFJDLJ3dYz5Ui-vzeU"/>
+        <div>
+          <div class="text-white font-semibold text-sm">Marcus Vance</div>
+          <div class="text-on-primary-container text-[10px] uppercase font-bold tracking-wider">Lead Curator, Stratos MGMT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right Side: Login Form -->
+  <section class="flex-1 bg-white dark:bg-slate-950 flex flex-col items-center justify-center p-8 md:p-16 lg:p-24 relative overflow-y-auto">
+    <div class="w-full max-w-md">
+      <div class="md:hidden flex items-center gap-2 mb-12">
+        <span class="font-headline font-extrabold text-2xl tracking-tight text-blue-900 italic">Concierge</span>
+      </div>
+      
+      <div class="mb-12">
+        <h2 class="font-headline font-bold text-3xl text-slate-900 dark:text-white mb-3 tracking-tight">
+          {{ isRegisterMode ? 'Create an account' : 'Welcome back' }}
+        </h2>
+        <p class="text-slate-500 font-body">Please enter your credentials to access the concierge dashboard.</p>
+      </div>
+
+      <div *ngIf="errorMessage" class="mb-6 p-4 bg-red-50 border border-red-100 text-red-700 text-sm rounded-lg animate-fade-in flex items-center gap-3 font-medium">
+          <span class="material-symbols-outlined text-lg">error</span>
+          {{ errorMessage }}
+      </div>
+
+      <form (submit)="onSubmit($event)" class="space-y-6">
+        
+        <div class="space-y-2" *ngIf="isRegisterMode">
+          <label class="block font-label text-[10px] font-bold tracking-widest text-slate-500 uppercase" for="name">Full Name</label>
+          <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg transition-colors group-focus-within:text-blue-800">person</span>
+            <input 
+                [(ngModel)]="name" name="name"
+                class="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-900 border-none rounded-lg font-body text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-100 transition-all placeholder:text-slate-400" 
+                id="name" 
+                placeholder="Marcus Vance" 
+                type="text"
+                [required]="isRegisterMode"/>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="block font-label text-[10px] font-bold tracking-widest text-slate-500 uppercase" for="email">Email Address</label>
+          <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg transition-colors group-focus-within:text-blue-800">mail</span>
+            <input 
+                [(ngModel)]="email" name="email"
+                class="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-900 border-none rounded-lg font-body text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-100 transition-all placeholder:text-slate-400" 
+                id="email" 
+                placeholder="m.vance@stratos.mgmt" 
+                type="email"
+                required/>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <label class="block font-label text-[10px] font-bold tracking-widest text-slate-500 uppercase" for="password">Password</label>
+            <a class="text-[11px] font-bold text-blue-800 hover:text-blue-900 transition-colors uppercase tracking-wider" href="#">Forgot password?</a>
+          </div>
+          <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg transition-colors group-focus-within:text-blue-800">lock</span>
+            <input 
+                [(ngModel)]="password" name="password"
+                class="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-900 border-none rounded-lg font-body text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-100 transition-all placeholder:text-slate-400" 
+                id="password" 
+                placeholder="••••••••••••" 
+                type="password"
+                required/>
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" type="button">
+              <span class="material-symbols-outlined text-lg">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 py-2">
+          <div class="relative flex items-center">
+            <input class="h-4 w-4 rounded border-slate-300 text-blue-800 focus:ring-blue-800 cursor-pointer" id="remember" type="checkbox"/>
+          </div>
+          <label class="text-xs font-medium text-slate-500 cursor-pointer" for="remember">Keep me signed in for 30 days</label>
+        </div>
+
+        <button 
+            [disabled]="isLoading"
+            class="w-full py-4 bg-primary-gradient text-white font-headline font-bold rounded-lg shadow-lg shadow-blue-900/10 transition-all active:scale-[0.98] hover:scale-[1.01] duration-200 flex justify-center items-center gap-2" 
+            type="submit">
+          <span *ngIf="isLoading" class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span>
+          {{ isLoading ? 'Authenticating...' : (isRegisterMode ? 'Register' : 'Access Dashboard') }}
+        </button>
+      </form>
+
+      <div class="mt-10 pt-10 border-t border-slate-100 dark:border-slate-800 text-center">
+        <p class="text-xs text-slate-500">
+          {{ isRegisterMode ? 'Already have an account?' : 'New to Stratos?' }} 
+          <a class="text-blue-800 font-bold hover:underline cursor-pointer" (click)="toggleMode($event)">
+            {{ isRegisterMode ? 'Sign In' : 'Request access' }}
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <footer class="absolute bottom-8 left-0 right-0 px-8 flex justify-between text-[9px] tracking-[0.2em] text-slate-400 uppercase font-bold">
+      <span>© 2024 Stratos Management Group</span>
+      <div class="flex gap-6">
+        <a class="hover:text-blue-800 transition-colors" href="#">Security</a>
+        <a class="hover:text-blue-800 transition-colors" href="#">Privacy</a>
+        <a class="hover:text-blue-800 transition-colors" href="#">Help</a>
+      </div>
+    </footer>
+  </section>
+</main>
